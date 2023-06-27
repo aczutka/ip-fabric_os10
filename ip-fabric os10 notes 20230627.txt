@@ -1,0 +1,85 @@
+IP-Fabric OS10 Notes
+
+
+Git
+
+zk8nq35sTLxD2
+
+disable ztd
+
+!
+ztd stop
+ztd cancel
+!
+
+Spine-1# show ztd-status
+
+-----------------------------------
+ZTD Status     : disabled
+ZTD State      : init
+Protocol State : idle
+Reason         :
+-----------------------------------
+Spine-1#
+
+set hostname
+
+!
+hostname Spine-
+hostname Leaf-
+!
+
+Alias
+
+!
+alias c configure
+!
+
+
+switch interfaces are set to their maximum supported MTU siye
+of 9216 bytes.
+
+!
+default mtu 9216
+!
+
+Enable Spanning-Tree
+
+!
+spanning-tree mode rstp
+!
+spanning-tree rstp priority 4096
+spanning-tree rstp priority 8192
+!
+
+Optionally Hardware-overlay-routing
+
+!
+hardware overlay-routing-profile scaled-overlay-routing
+!
+
+Enable BFD
+
+!
+bfd enable
+!
+
+VRF configuration
+
+!
+ip vrf customer_a
+!
+
+VTEP and Router-Id configuration
+
+!
+interface loopback0
+ description VTEP-1
+ no shutdown
+ ip address 172.21.1.1/32
+!
+interface loopback1
+ description Router-Id
+ no shutdown
+ ip address 10.2.2.2/32
+!

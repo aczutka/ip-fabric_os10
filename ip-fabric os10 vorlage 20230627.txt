@@ -1,0 +1,42 @@
+
+
+!
+ztd stop
+ztd cancel
+!
+
+!
+hostname Leaf-2
+!
+alias c configure
+!
+!
+default mtu 9216
+!
+
+Enable Spanning-Tree
+
+!
+spanning-tree mode rstp
+!
+spanning-tree rstp priority 4096
+spanning-tree rstp priority 8192
+!
+
+Optionally Hardware-overlay-	routing
+
+!
+hardware overlay-routing-profile scaled-overlay-routing
+!
+
+Enable BFD
+
+!
+bfd enable
+!
+
+VRF configuration
+
+!
+ip vrf customer_a
+!
