@@ -23,7 +23,7 @@ spanning-tree rstp priority 4096
 spanning-tree rstp priority 8192
 !
 
-Optionally Hardware-overlay-	routing
+Optionally Hardware-overlay-routing
 
 !
 hardware overlay-routing-profile scaled-overlay-routing
@@ -40,3 +40,16 @@ VRF configuration
 !
 ip vrf customer_a
 !
+
+!
+interface loopback0
+ description VTEP-1
+ no shutdown
+ ip address 172.21.1.1/32
+!
+interface loopback1
+ description Router-Id
+ no shutdown
+ ip address 10.2.2.2/32
+!
+
