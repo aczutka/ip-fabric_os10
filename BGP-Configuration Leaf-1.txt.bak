@@ -1,0 +1,32 @@
+BGP-Configuration Leaf-1
+
+interfaces to Spine-1
+
+!
+interface vlan 10
+description -->Spine-1
+ip address 172.21.10.1/31
+no shut
+!
+description -->Spine-1
+switchport mode access vlan 10
+no shut
+!
+
+!
+router bgp 65201
+bfd all-neighbors interval 200 min_rx 200 multiplier 3 role active
+address-family ipv4 unicast
+redistributed connected
+bestpath as-path multipath-relax
+maximum-paths ebgp 2
+graceful-restart role receiver-only
+!
+neighbor 172.21.10.0
+advertisement-interval 5
+bfd
+fall-over
+remote-as 65101
+address-family ipv4 unicast
+no shutdown
+!
