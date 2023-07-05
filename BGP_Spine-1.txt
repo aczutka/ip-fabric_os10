@@ -1,0 +1,43 @@
+
+!
+router bgp 65101
+ router-id 10.2.1.1
+ !
+ address-family ipv4 unicast
+  network 10.2.1.1/32
+ !
+ neighbor 172.21.10.1
+   remote-as 65201
+   no shutdown
+ !
+ neighbor 172.21.20.1
+  remote-as 65202
+  no shutdown
+  !
+ !
+ !
+ neighbor 10.2.2.1
+  remote-as 65201
+  send-community extended
+  update-source loopback1
+  no shutdown
+  !
+  address-family ipv4 unicast
+   no activate
+  !
+  address-family l2vpn evpn
+   activate
+!
+ !
+ neighbor 10.2.2.2
+  remote-as 65202
+  send-community extended
+  update-source loopback1
+  no shutdown
+  !
+  address-family ipv4 unicast
+   no activate
+  !
+  address-family l2vpn evpn
+   activate
+!
